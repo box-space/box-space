@@ -44,7 +44,7 @@ setTimeout(function dailyTasks() {
 }, 28800000)
 
 function updateQ() {
-      setTimeout(q.getCurrentQ, 30000)
+      setTimeout(q.getCurrentQ, 10000)
       setTimeout(updateQ, 300000)
 }
 
