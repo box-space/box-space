@@ -4,7 +4,9 @@
 
 ![1](/README-img/1.png)
 
-![2](/README-img/2.png)
+<!--DevMountain Passport was used to create the login. -->
+
+![2](/README-img/2.5.png)
 
 ![3](/README-img/3.png)
 
