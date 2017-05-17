@@ -203,6 +203,20 @@ app.post('/api/prefs/', (req, res) => {
       })
 }) //for user preference database
 
+
+app.post('/api/alertPrefs/', (req, res) => {
+      console.log('body: ' + req.body.prefs)
+      req.user.id = 1;
+      db.upsertPrefsByUser ([req.user.id, req.body.prefs], (err) => {
+            console.log('id ' + req.user.id)
+            console.log('body2 ' + req.body.prefs)
+            if (err) res.status(500).send(err)
+            else res.status(200).send('User updated.')
+      })
+}) 
+
+
+
 //for testing purposes; remove once live
 app.put('/api/reset', (req, res) => {
       db.resetSchema((err) => {

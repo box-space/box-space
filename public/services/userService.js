@@ -42,4 +42,23 @@ angular.module('app').service('userService', function ($http, config) {
         })
     }
 
+    this.postUserRemovedAlerts = (alert) => {
+        // let alertArr = []
+        // let prefs = alert
+        // alertArr.push(alert)
+        console.log(alert)
+         
+        return $http.post('http://localhost:8002/api/alertPrefs/', {
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
+            prefs: alert
+        }).then(response => {
+            console.log('success!', response.data)
+            return response.data
+        }).catch(function (err) {
+            console.log('Error');
+        })
+    }
+
 })

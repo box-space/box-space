@@ -278,19 +278,22 @@ angular.module('app').controller('mainCtrl', function ($scope, attendanceService
 
     //--------------Remove Alerts----------------//
 
-  // $scope.removeRedAlert = (red) => {
-  //   console.log(red)
-  // }
+  $scope.removeRedAlert = (red) => {
+    console.log(red)
+  }
 
 
   $scope.removeAttendAlert = (alert) => {
     $scope.attendanceAlerts.map((e) => {
       if(e === alert) {
         $scope.attendanceAlerts.splice(e, 1)
+        userService.postUserRemovedAlerts(e)
       }
     })
-    console.log($scope.attendanceAlerts)
-    return $scope.attendanceAlerts
+    // console.log($scope.attendanceAlerts)
+    // return $scope.attendanceAlerts
+    // userService.postUserPrefs($scope.user.cohort_ids)
+        // break 
 
   }
 
@@ -298,29 +301,27 @@ angular.module('app').controller('mainCtrl', function ($scope, attendanceService
       $scope.progressAlerts.map((e) => {
         if(e === alert) {
           $scope.progressAlerts.splice(e, 1)
+          // userService.postUserRemovedAlerts(e)
         }
       })
-      console.log($scope.progressAlert)
-      return $scope.progressAlerts
     }
 
     $scope.removeNoAttendAlert = (alert) => {
       $scope.noAttendanceAlerts.map((e) => {
         if(e === alert) {
           $scope.noAttendanceAlerts.splice(e, 1)
+          // userService.postUserRemovedAlerts(e)
         }
       })
-      console.log($scope.noAttendanceAlert)
-      return $scope.noAttendanceAlerts
     }
 
     $scope.removeStudentQAlert = (alert) => {
       $scope.studentQAlerts.map((e) => {
         if(e === alert) {
           $scope.studentQAlerts.splice(e, 1)
+          // userService.postUserRemovedAlerts(e)
         }
       })
-      return $scope.studentQAlerts
     }
 
 
