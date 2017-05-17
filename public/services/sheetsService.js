@@ -4,7 +4,7 @@ angular.module('app').service('sheetsService', function ($http, config) {
         return $http.get('https://sheetsu.com/apis/v1.0/45425dfc758e').then(response => {
             return response.data
         }).catch(function (err) {
-            console.log('Error');
+            // console.log('Error');
         })
     }
 

@@ -276,6 +276,53 @@ angular.module('app').controller('mainCtrl', function ($scope, attendanceService
   }
   getstudentQAlert()
 
+    //--------------Remove Alerts----------------//
+
+  // $scope.removeRedAlert = (red) => {
+  //   console.log(red)
+  // }
+
+
+  $scope.removeAttendAlert = (alert) => {
+    $scope.attendanceAlerts.map((e) => {
+      if(e === alert) {
+        $scope.attendanceAlerts.splice(e, 1)
+      }
+    })
+    console.log($scope.attendanceAlerts)
+    return $scope.attendanceAlerts
+
+  }
+
+    $scope.removeProgressAlert = (alert) => {
+      $scope.progressAlerts.map((e) => {
+        if(e === alert) {
+          $scope.progressAlerts.splice(e, 1)
+        }
+      })
+      console.log($scope.progressAlert)
+      return $scope.progressAlerts
+    }
+
+    $scope.removeNoAttendAlert = (alert) => {
+      $scope.noAttendanceAlerts.map((e) => {
+        if(e === alert) {
+          $scope.noAttendanceAlerts.splice(e, 1)
+        }
+      })
+      console.log($scope.noAttendanceAlert)
+      return $scope.noAttendanceAlerts
+    }
+
+    $scope.removeStudentQAlert = (alert) => {
+      $scope.studentQAlerts.map((e) => {
+        if(e === alert) {
+          $scope.studentQAlerts.splice(e, 1)
+        }
+      })
+      return $scope.studentQAlerts
+    }
+
 
 
   //--------------Preference SideNav Functions----------------//
