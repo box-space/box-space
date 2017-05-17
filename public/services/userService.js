@@ -52,7 +52,7 @@ angular.module('app').service('userService', function ($http, config) {
             headers: {
                 'Access-Control-Allow-Origin': '*'
             },
-            prefs: alert
+            alert: alert
         }).then(response => {
             console.log('success!', response.data)
             return response.data
