@@ -57,9 +57,16 @@ let self = module.exports = {
           }
           Promise.all(promises).then((response) => {
             let attendObj = []
+
+          /////////////
+
+
+
+          //////////////
             for (let i = 0; i < response.length; i++) {
               attendObj.push(JSON.parse(response[i]))
             }
+            // console.log(attendObj[0].attendances, " HERE");
             res.send(self.attendanceObjectParsing(attendObj))
           }).catch((err) => {
             console.log(err)
@@ -73,13 +80,14 @@ let self = module.exports = {
     let absences = []
     let lates = []
     let leftEarly = []
+    console.log(attendObj[0].attendances[0]._id)
     for (let i = 0; i < attendObj.length; i++) {
       let aobj = attendObj[i].attendances
       let k = 0
       for (let j = 0; j < aobj.length; j++) {
         if (aobj[j].attendanceData) {
           if (aobj[j].attendanceData.abscent === true) {
-            absences.push([aobj[j].user.firstName, aobj[j].user.lastName])
+            absences.push([aobj[j].user.firstName, aobj[j].user.lastName, aobj[j]._id])
           }
           if (aobj[j].attendanceData.late === true) {
             lates.push([aobj[j].user.firstName, aobj[j].user.lastName])

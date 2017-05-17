@@ -47,6 +47,8 @@ angular.module('app').service('userService', function ($http, config) {
         // let prefs = alert
         // alertArr.push(alert)
         console.log(alert)
+        //    var cool = alert.alert;
+    // console.log(cool)
          
         return $http.post('http://localhost:8002/api/alertPrefs/', {
             headers: {

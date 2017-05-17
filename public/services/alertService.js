@@ -7,6 +7,7 @@ angular.module('app').service('alertService', function ($http, config) {
                 'Access-Control-Allow-Origin': '*'
             }
         }).then(function (res) {
+            console.log(res)
             return res
         }).catch(function (err) {
             console.log('Error');

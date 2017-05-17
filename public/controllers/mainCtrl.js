@@ -278,12 +278,15 @@ angular.module('app').controller('mainCtrl', function ($scope, attendanceService
 
     //--------------Remove Alerts----------------//
 
-  $scope.removeRedAlert = (red) => {
-    console.log(red)
-  }
+  // $scope.removeRedAlert = (red) => {
+  //   console.log(red)
+  // }
 
 
   $scope.removeAttendAlert = (alert) => {
+    console.log(alert);
+ 
+    
     $scope.attendanceAlerts.map((e) => {
       if(e === alert) {
         $scope.attendanceAlerts.splice(e, 1)

@@ -204,11 +204,14 @@ app.post('/api/prefs/', (req, res) => {
 }) //for user preference database
 
 app.post('/api/alertPrefs/', (req, res) => {
-      req.user.cohort_ids = req.body.alert;
-      // console.log(req.user.cohort_ids)
-      db.upsertPrefsByUser ([req.user.id, req.body.prefs], (err) => {
-            console.log(req.user.id)
-            console.log(req.body.prefs)
+      console.log(req.body.alert)
+      var fullname = req.body.alert.join(' ')
+      console.log(fullname)
+      console.log(req.body.prefs)
+
+      db.upsertPrefsByUser([req.user.id, req.body.prefs], (err) => {
+            // console.log(req.user.id)
+            // console.log(req.body.prefs)
             if (err) res.status(500).send(err)
             else res.status(200).send('User updated.')
       })
