@@ -243,6 +243,7 @@ angular.module('app').controller('mainCtrl', function ($scope, attendanceService
     for (let i = 0; i < $scope.redAlerts.length; i++) {
       $scope.redAlerts[i].waitTime = Math.floor($scope.redAlerts[i].waitTime / 60000);
     }
+    console.log($scope.redAlerts)
     $scope.$apply();
   })
 
