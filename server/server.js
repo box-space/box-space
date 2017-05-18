@@ -205,7 +205,7 @@ app.post('/api/prefs/', (req, res) => {
       })
 }) //for user preference database
 
-app.post('/api/alertPrefs/', (req, res) => {
+app.post('/api/alertPrefs', (req, res) => {
       db.upsertPrefsAlertsByUser([req.user.id, req.body.alert], (err) => {
             console.log(typeof req.user.id)
             console.log(typeof req.body.alert)
