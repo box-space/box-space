@@ -243,7 +243,6 @@ angular.module('app').controller('mainCtrl', function ($scope, attendanceService
     for (let i = 0; i < $scope.redAlerts.length; i++) {
       $scope.redAlerts[i].waitTime = Math.floor($scope.redAlerts[i].waitTime / 60000);
     }
-    console.log($scope.redAlerts)
     $scope.$apply();
   })
 
@@ -280,12 +279,10 @@ angular.module('app').controller('mainCtrl', function ($scope, attendanceService
     //--------------Remove Alerts----------------//
 
   $scope.removeRedAlert = (red) => {
-    console.log(red)
     $scope.redAlerts.map((e) => {
       if(e === red) {
         $scope.redAlerts.splice(e, 1)
         userService.postUserRemovedAlerts(e.id)
-        console.log(e.id)
       }
     })
   }
@@ -311,7 +308,6 @@ angular.module('app').controller('mainCtrl', function ($scope, attendanceService
     // }//Googlesheets not working don't know how the data is set up. 
 
     $scope.removeNoAttendAlert = (alert) => {
-      console.log(alert)
       $scope.noAttendanceAlerts.map((e) => {
         if(e === alert) {
           $scope.noAttendanceAlerts.splice(e, 1)
@@ -321,7 +317,6 @@ angular.module('app').controller('mainCtrl', function ($scope, attendanceService
     }
 
     $scope.removeStudentQAlert = (alert) => {
-      // console.log(alert)
       $scope.studentQAlerts.map((e) => {
         if(e === alert) {
           $scope.studentQAlerts.splice(e, 1)
