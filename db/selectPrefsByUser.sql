@@ -1,1 +1,1 @@
-select cohort_ids from prefs where user_id = $1;
+select cohort_ids ignore_alerts from prefs where user_id = $1;

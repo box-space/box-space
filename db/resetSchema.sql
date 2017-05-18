@@ -6,3 +6,6 @@ create table prefs (
     cohort_ids int[],
     ignored_alerts Varchar(150)
 );
+
+insert into prefs (ignored_alerts)
+values('234', '456')

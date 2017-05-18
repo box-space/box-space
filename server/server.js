@@ -197,6 +197,7 @@ app.get('/api/attendancerecorded', alert.noAttendanceAlert) //gets alerts relate
 app.get('/api/attendance', alert.attendanceAlert) //gets alerts related to absent students
 app.post('/api/prefs/', (req, res) => {
       req.user.cohort_ids = req.body.prefs;
+      console.log(typeof req.user.id)
       console.log(typeof req.body.prefs)
       db.upsertPrefsByUser ([req.user.id, req.body.prefs], (err) => {
             if (err) res.status(500).send(err)
@@ -205,14 +206,13 @@ app.post('/api/prefs/', (req, res) => {
 }) //for user preference database
 
 app.post('/api/alertPrefs/', (req, res) => {
-      // console.log(req.body.alert);
       db.upsertPrefsAlertsByUser([req.user.id, req.body.alert], (err) => {
             console.log(typeof req.user.id)
             console.log(typeof req.body.alert)
             if (err) res.status(500).send(err)
             else res.status(200).send('User updated.')
       })
-}) //for user preference database DOESN'T WORK but it has the UserID && AttendanceAlertID/noAttendanceAlertId/StudentQAlertId/RedAlertId
+}) 
 
 
 
