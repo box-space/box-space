@@ -278,51 +278,46 @@ angular.module('app').controller('mainCtrl', function ($scope, attendanceService
 
     //--------------Remove Alerts----------------//
 
-  // $scope.removeRedAlert = (red) => {
-  //   console.log(red)
-  // }
+  $scope.removeRedAlert = (red) => {
+    console.log(red)
+  }
 
 
   $scope.removeAttendAlert = (alert) => {
-    console.log(alert);
- 
-    
     $scope.attendanceAlerts.map((e) => {
       if(e === alert) {
         $scope.attendanceAlerts.splice(e, 1)
-        userService.postUserRemovedAlerts(e)
+        userService.postUserRemovedAlerts(e[2])
       }
     })
-    // console.log($scope.attendanceAlerts)
-    // return $scope.attendanceAlerts
-    // userService.postUserPrefs($scope.user.cohort_ids)
-        // break 
-
   }
 
-    $scope.removeProgressAlert = (alert) => {
-      $scope.progressAlerts.map((e) => {
-        if(e === alert) {
-          $scope.progressAlerts.splice(e, 1)
-          // userService.postUserRemovedAlerts(e)
-        }
-      })
-    }
+    // $scope.removeProgressAlert = (alert) => {
+    //   console.log(alert)
+    //   $scope.progressAlerts.map((e) => {
+    //     if(e === alert) {
+    //       $scope.progressAlerts.splice(e, 1)
+    //       userService.postUserRemovedAlerts(e)
+    //     }
+    //   })
+    // }//Googlesheets not working don't know how the data is set up. 
 
     $scope.removeNoAttendAlert = (alert) => {
+      console.log(alert)
       $scope.noAttendanceAlerts.map((e) => {
         if(e === alert) {
           $scope.noAttendanceAlerts.splice(e, 1)
-          // userService.postUserRemovedAlerts(e)
+          userService.postUserRemovedAlerts(e._id)
         }
       })
     }
 
     $scope.removeStudentQAlert = (alert) => {
+      // console.log(alert)
       $scope.studentQAlerts.map((e) => {
         if(e === alert) {
           $scope.studentQAlerts.splice(e, 1)
-          // userService.postUserRemovedAlerts(e)
+          userService.postUserRemovedAlerts(e._id)
         }
       })
     }

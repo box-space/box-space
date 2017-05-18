@@ -66,7 +66,6 @@ let self = module.exports = {
             for (let i = 0; i < response.length; i++) {
               attendObj.push(JSON.parse(response[i]))
             }
-            // console.log(attendObj[0].attendances, " HERE");
             res.send(self.attendanceObjectParsing(attendObj))
           }).catch((err) => {
             console.log(err)
@@ -80,7 +79,6 @@ let self = module.exports = {
     let absences = []
     let lates = []
     let leftEarly = []
-    console.log(attendObj[0].attendances[0]._id)
     for (let i = 0; i < attendObj.length; i++) {
       let aobj = attendObj[i].attendances
       let k = 0
@@ -201,13 +199,14 @@ let self = module.exports = {
             if (isNewStudent) {
                 let max = new Date(qbody[i].timeQuestionAnswered).getTime()
                 let min = new Date(qbody[i].timeMentorBegins).getTime()
-                if (!max) {
+                if (max) {
                     max = new Date().getTime()
                 }
                 let student = {
                     name: qbody[i].name,
                     count: 1,
                     sum: max - min,
+                    id: qbody[1]._id
                 }
                 students.push(student)
             }

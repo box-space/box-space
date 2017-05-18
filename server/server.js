@@ -204,18 +204,15 @@ app.post('/api/prefs/', (req, res) => {
 }) //for user preference database
 
 app.post('/api/alertPrefs/', (req, res) => {
-      console.log(req.body.alert)
-      var fullname = req.body.alert.join(' ')
-      console.log(fullname)
-      console.log(req.body.prefs)
+      req.user.cohort_ids = req.body.alert;
 
-      db.upsertPrefsByUser([req.user.id, req.body.prefs], (err) => {
-            // console.log(req.user.id)
-            // console.log(req.body.prefs)
+      db.upsertPrefsByUser([req.user.id, req.body.alert], (err) => {
+            console.log(req.user.id)
+            console.log(req.body.alert)
             if (err) res.status(500).send(err)
             else res.status(200).send('User updated.')
       })
-}) //for user preference database
+}) //for user preference database DOESN'T WORK but it has the UserID && AttendanceAlertID/noAttendanceAlertId/
 
 
 
