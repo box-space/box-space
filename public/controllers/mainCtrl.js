@@ -281,6 +281,13 @@ angular.module('app').controller('mainCtrl', function ($scope, attendanceService
 
   $scope.removeRedAlert = (red) => {
     console.log(red)
+    $scope.redAlerts.map((e) => {
+      if(e === red) {
+        $scope.redAlerts.splice(e, 1)
+        userService.postUserRemovedAlerts(e.id)
+        console.log(e.id)
+      }
+    })
   }
 
 
