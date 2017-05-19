@@ -31,6 +31,7 @@ angular.module('app').service('userService', function ($http, config) {
             console.log('success!', response.data)
             return response.data
         }).catch(function (err) {
+
             console.log('Error');
         })
     }
@@ -65,11 +66,12 @@ angular.module('app').service('userService', function ($http, config) {
             headers: {
                 'Access-Control-Allow-Origin': '*'
             },
-            alert: alert
+            alert: "{" + alert + "}"
         }).then(response => {
             console.log('success!', response.data)
             return response.data
         }).catch(function (err) {
+            console.log(err)
             console.log('Error');
         })
     }

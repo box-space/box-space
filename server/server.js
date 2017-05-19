@@ -50,6 +50,7 @@ passport.use('devmtn', new devAuth({
                   if (!returnedUser[0]) {
                         console.log('CREATING USER');
                         db.upsertPrefsByUser([user.id, []], function (err, createdUser) {
+                              console.log(err)
                               console.log('USER CREATED', createdUser);
                               createdUser[0].name = user.first_name + " " + user.last_name
                               createdUser[0].id = user.id
@@ -204,7 +205,7 @@ app.post('/api/prefs/', (req, res) => {
 }) //for user preference database
 
 app.post('/api/alertPrefs', (req, res) => {
-      db.postAlertsToPrefs([req.user.id, req.body.alert], (err) => {
+      db.upsertPrefsAlertsByUser([req.user.id, req.body.alert], (err) => {
             console.log(req.user.id)
             console.log(req.body.alert)
             console.log(typeof req.body.alert)
