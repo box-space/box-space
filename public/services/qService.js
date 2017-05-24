@@ -225,7 +225,6 @@ angular.module('app').service('qService', function ($http, config) {
         let targetStudentMetrics = students.filter((s) => {
             return targetStudents.indexOf(s.name) != -1
         })
-        // console.log(targetStudentMetrics)
 
         targetStudentMetrics.sort((a, b) => {
             return b[metric] - a[metric]
@@ -302,4 +301,115 @@ angular.module('app').service('qService', function ($http, config) {
             console.log('Error');
         })
     }
+
+    // ---------------
+
+      this.getAllPercents = (students, metric) => {
+        //   console.log(students)
+        //   console.log(targetStudents)
+        // let targetStudentMetrics = students.filter((s) => {
+        //     return targetStudents.indexOf(s.name) != -1
+        // })
+        // // console.log(targetStudentMetrics)
+        // targetStudentMetrics.sort((a, b) => {
+        //     return b[metric] - a[metric]
+        // })
+        // students = students.filter((s) => {
+        //     let top = false
+        //     for (let i = 0; i <= 2; i++) {
+        //         // console.log(s)
+        //         // console.log(targetStudentMetrics[i].name)
+        //         // console.log(s.name)
+        //         if (targetStudentMetrics[i] &&
+        //             targetStudentMetrics[i].name == s.name) top = true
+        //     }
+        //     return !top
+        // })
+        // let first = targetStudentMetrics.shift()
+        // let base = {
+        //     sum: 0,
+        //     count: 0,
+        //     average: 0,
+        //     name: 'NA'
+        // }
+        // let second = base
+        // if (targetStudentMetrics.length >= 1) second = targetStudentMetrics.shift()
+        // let third = base
+        // if (targetStudentMetrics.length >= 1) third = targetStudentMetrics.shift()
+
+        let total = 0
+        let totalCount = 0
+        if (metric == 'average') {
+            total = students.reduce((total, student) => {
+                return total + student.sum
+            }, 0)
+            totalCount = students.reduce((total, student) => {
+                return total + student.count
+            }, 0)
+        } else {
+            total = students.reduce((total, student) => {
+                return total + student[metric]
+            }, 0)
+        }
+        // console.log(total)
+        // console.log(totalCount)
+        // console.log(students)
+
+        if (totalCount != 0) total = parseFloat((total / (totalCount * 60000)).toFixed(2))
+
+        // let sum = first[metric] + second[metric] + third[metric] + total
+
+        let sum = total
+        // console.log(sum)
+
+        // let base = {
+        //     sum: 0,
+        //     count: 0,
+        //     average: 0,
+        //     name: 'NA'
+        // }
+
+        // console.log(students)
+        //    metric = metric / 1
+        for(let i = 0; i < students.length; i++){
+            for(let key in students[i]){
+                console.log(parseFloat(students[i][metric] / sum * 100))
+                students[i][metric] = parseFloat((students[i][metric] / sum).toFixed(2))
+            }
+        }
+            // students[metric] = parseFloat((students[metric] / sum).toFixed(2))
+        
+
+         console.log(students)
+
+
+        // let firstPercent = parseFloat((first[metric] / sum).toFixed(2))
+        // let secondPercent = parseFloat((second[metric] / sum).toFixed(2))
+        // let thirdPercent = parseFloat((third[metric] / sum).toFixed(2))
+        // let totalPercent = parseFloat((1 - (firstPercent + secondPercent + thirdPercent)).toFixed(2))
+        // let topStudents = []
+        // topStudents.push({
+        //     name: first.name,
+        //     metric: first[metric],
+        //     percent: firstPercent
+        // })
+        // if (targetStudents.length > 1) topStudents.push({
+        //     name: second.name,
+        //     metric: second[metric],
+        //     percent: secondPercent
+        // })
+        // if (targetStudents.length > 2) topStudents.push({
+        //     name: third.name,
+        //     metric: third[metric],
+        //     percent: thirdPercent
+        // })
+        // topStudents.push({
+        //     name: 'Other',
+        //     metric: total,
+        //     percent: totalPercent
+        // })
+        // return topStudents
+    }
+
+
 })

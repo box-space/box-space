@@ -514,7 +514,7 @@ angular.module('app').controller('mainCtrl', function ($scope, attendanceService
 
     mostAveraged = (startDate, endDate, cohortId) => { //gets pie data for the most requested average q time
       getMostRequestingStudentData(startDate, endDate, cohortId).then(res => {
-        $scope.mostAverageTotals = res
+        $scope.mostAverageTotals = qService.getAllPercents(res, 'average')
         $scope.mostAverage = sortPieData(qService.getHighest(res, filteredStudents, 'average'))
       })
     }
