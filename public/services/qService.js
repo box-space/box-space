@@ -371,16 +371,21 @@ angular.module('app').service('qService', function ($http, config) {
 
         // console.log(students)
         //    metric = metric / 1
+        let studentsList = []
         for(let i = 0; i < students.length; i++){
             for(let key in students[i]){
-                console.log(parseFloat(students[i][metric] / sum * 100))
-                students[i][metric] = parseFloat((students[i][metric] / sum).toFixed(2))
+                var pairs = {
+                [metric]: parseFloat((students[i][metric] / sum).toFixed(2)),
+                'name': students[i].name
             }
+            }
+            studentsList.push(pairs)
         }
+        console.log(studentsList)
             // students[metric] = parseFloat((students[metric] / sum).toFixed(2))
         
 
-         console.log(students)
+        //  console.log(students)
 
 
         // let firstPercent = parseFloat((first[metric] / sum).toFixed(2))
