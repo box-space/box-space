@@ -514,18 +514,21 @@ angular.module('app').controller('mainCtrl', function ($scope, attendanceService
 
     mostAveraged = (startDate, endDate, cohortId) => { //gets pie data for the most requested average q time
       getMostRequestingStudentData(startDate, endDate, cohortId).then(res => {
+        $scope.mostAverageTotals = res
         $scope.mostAverage = sortPieData(qService.getHighest(res, filteredStudents, 'average'))
       })
     }
 
     mostHelp = (startDate, endDate, cohortId) => { //gets pie data for the most requested help q time
       getMostRequestingStudentData(startDate, endDate, cohortId).then(res => {
+        $scope.mostHelpedTotals = res
         $scope.mostHelped = sortPieData(qService.getHighest(res, filteredStudents, 'sum'))
       })
     }
 
     mostRequest = (startDate, endDate, cohortId) => { //gets pie data for the most q requests
       getMostRequestingStudentData(startDate, endDate, cohortId).then(res => {
+        $scope.mostRequestTotals = res
         $scope.mostRequests = sortPieData(qService.getHighest(res, filteredStudents, 'count'))
         // console.log($scope.mostRequests)
       })
