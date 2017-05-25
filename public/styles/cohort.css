@@ -767,13 +767,13 @@
     top: 15%;
     width: 100%;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .pieOverlay h5 {
     padding: 5px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 14px;
     color: #818181;
     display: block;
     transition: 0.3s;
@@ -823,7 +823,7 @@
 .lastPieOverlay h5 {
     padding: 5px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 14px;
     color: #818181;
     display: block;
     transition: 0.3s;

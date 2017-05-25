@@ -360,6 +360,7 @@ angular.module('app').service('qService', function ($http, config) {
         // let sum = first[metric] + second[metric] + third[metric] + total
 
         let sum = total
+        console.log(sum)
         // console.log(sum)
 
         // let base = {
@@ -375,7 +376,7 @@ angular.module('app').service('qService', function ($http, config) {
         for(let i = 0; i < students.length; i++){
             for(let key in students[i]){
                 var pairs = {
-                [metric]: parseFloat((students[i][metric] / sum).toFixed(2)),
+                'percent': parseFloat((students[i][metric] / sum).toFixed(2)),
                 'name': students[i].name
             }
             }
