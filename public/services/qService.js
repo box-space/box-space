@@ -305,6 +305,9 @@ angular.module('app').service('qService', function ($http, config) {
     // ---------------
 
       this.getAllPercents = (students, metric) => {
+
+          console.log(students
+          )
         //   console.log(students)
         //   console.log(targetStudents)
         // let targetStudentMetrics = students.filter((s) => {
@@ -359,8 +362,17 @@ angular.module('app').service('qService', function ($http, config) {
 
         // let sum = first[metric] + second[metric] + third[metric] + total
 
-        let sum = total
-        console.log(sum)
+        let sum = totalCount
+
+        // let sum = 0
+        //   for(let i = 0; i < students.length; i++){
+        //     for(let key in students[i]){
+        //       sum += students[i][metric]  
+        //       console.log(students[i][metric])
+        //     }
+            
+        // }
+        // console.log(sum / 4)
         // console.log(sum)
 
         // let base = {
@@ -382,7 +394,7 @@ angular.module('app').service('qService', function ($http, config) {
             }
             studentsList.push(pairs)
         }
-        console.log(studentsList)
+        // console.log(studentsList)
             // students[metric] = parseFloat((students[metric] / sum).toFixed(2))
         
 
